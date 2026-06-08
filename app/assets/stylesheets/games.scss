@@ -44,7 +44,7 @@ body.app-body {
 .games-page {
   position: relative;
   overflow: hidden;
-  padding: $page-padding-y $page-padding-x calc(#{$page-padding-y} + 80px);
+  padding: $page-padding-y $page-padding-x calc(#{$page-padding-y} + 140px);
 }
 
 .games-page__glow {
@@ -207,4 +207,220 @@ body.app-body {
   flex-shrink: 0;
   font-size: 18px;
   line-height: 1;
+}
+
+// Footer
+.site-footer {
+  position: relative;
+  z-index: 2;
+  padding: 0 $page-padding-x 52px;
+  background: #050508;
+  overflow: visible;
+}
+
+.site-footer__top-glow {
+  position: relative;
+  height: 4px;
+  margin: 0 calc(-1 * #{$page-padding-x});
+  background: linear-gradient(
+    90deg,
+    #5eead4 0%,
+    #a5f3fc 12%,
+    #ffffff 50%,
+    #fbcfe8 78%,
+    #f0abfc 100%
+  );
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.35),
+    0 0 40px rgba(167, 139, 250, 0.25);
+}
+
+.site-footer__cube-area {
+  display: flex;
+  justify-content: center;
+  margin-top: -110px;
+  margin-bottom: 4px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.site-footer__cube-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(220px, 70%);
+    height: 28px;
+    background: radial-gradient(ellipse, rgba(124, 58, 237, 0.4) 0%, rgba(124, 58, 237, 0) 72%);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+}
+
+.site-footer__cube {
+  width: min(220px, 38vw);
+  height: auto;
+  display: block;
+  -webkit-box-reflect: below -10px linear-gradient(transparent, transparent 40%, rgba(255, 255, 255, 0.1));
+}
+
+.site-footer__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 420px) 1fr;
+  align-items: center;
+  gap: 24px;
+  max-width: $max-content-width;
+  margin: 0 auto;
+  padding-top: 12px;
+}
+
+.site-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: $color-text-primary;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-text-primary;
+    opacity: 0.92;
+  }
+}
+
+.site-footer__brand-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.site-footer__brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.site-footer__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.site-footer__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 240px;
+  padding: 14px 32px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #6d28d9 0%, #5b21b6 100%);
+  color: $color-text-primary;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  box-shadow: 0 8px 24px rgba(91, 33, 182, 0.4);
+  transition: filter 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: $color-text-primary;
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+  }
+}
+
+.site-footer__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(24px, 3vw, 48px);
+  flex-wrap: wrap;
+
+  a {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-text-primary;
+    }
+  }
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #6d28d9;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  .bi {
+    display: block;
+    line-height: 1;
+  }
+
+  &:hover {
+    background: #7c3aed;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+}
+
+@media (max-width: 900px) {
+  .site-footer {
+    padding-bottom: 40px;
+  }
+
+  .site-footer__cube-area {
+    margin-top: -70px;
+  }
+
+  .site-footer__content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .site-footer__center {
+    order: 1;
+  }
+
+  .site-footer__brand {
+    order: 2;
+    justify-content: center;
+  }
+
+  .site-footer__nav {
+    order: 3;
+    justify-content: center;
+  }
 }
